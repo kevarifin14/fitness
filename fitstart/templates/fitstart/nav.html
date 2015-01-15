@@ -1,0 +1,34 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'fitstart/style.css' %}" />
+
+<header id="title">
+	<a href="http://localhost:8000/fitstart/">
+		<h1>self.change()</h1>
+		<h2>Empower yourself to make the change</h2>
+	</a>
+</header>
+
+<div class="nav">
+	<ul>
+		<li><a href="http://localhost:8000/fitstart/exercise/">Exercises</a>
+			<ul>
+				<li><a href="http://localhost:8000/fitstart/exercise/add">Add</a></li>
+				<li><a href="http://localhost:8000/fitstart/exercise/repository">Repository</a></li>
+			</ul>
+
+		</li>
+		<li><a href="http://localhost:8000/fitstart/workout/">Workouts</a>
+			<ul>
+				<li><a href="http://localhost:8000/fitstart/workout/create/">Create</a></li>
+				<li><a href="http://localhost:8000/fitstart/workout/collection/">Collection</a></li>
+			</ul>
+		</li>
+		<li><a href="http://localhost:8000/fitstart/challenges">Challenges</a></li>
+		<li><a href="http://localhost:8000/fitstart/calendar">Calendar</a></li>
+	</ul>
+</div>
+
+{% block content %}
+
+{% endblock %}

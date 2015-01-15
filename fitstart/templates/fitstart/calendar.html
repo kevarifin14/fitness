@@ -1,0 +1,30 @@
+<html>
+
+{% extends "fitstart/nav.html" %}
+
+{% block content %}
+
+<div id="main">
+
+{% for day in week %}
+	<div id="day">
+		<h3>{{ day.date }}</h3>
+		{% for event in event_list %}
+			{% if not event.end %}
+				{% if event.start <= day.date %}
+					<a href="http://localhost:8000/fitstart/workout/collection/"><p>{{ event }}</p></a>
+				{% endif %}
+			{% else %}
+				{% if event.start <= day.date and event.end >= day.date %}
+					<a href="http://localhost:8000/fitstart/workout/collection/"><p>{{ event }}</p></a>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endfor %}
+
+</div>
+
+{% endblock %}
+
+</html>

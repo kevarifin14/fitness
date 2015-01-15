@@ -1,0 +1,36 @@
+<html>
+
+{% extends 'fitstart/nav.html' %}
+
+{% block content %}
+
+<script>
+	function resetForm(){
+		document.getElementById('add').reset();
+	}
+</script>
+
+<div id="main">
+
+<h1>Add Exercise</h1>
+
+<form action="" method="post" name="add">
+	{% csrf_token %}
+	
+	{{ form.as_p }}
+
+
+<input type="submit" value="Submit" onclick="resetForm()">
+<input type="reset" value="Reset">
+
+
+</form>
+
+</div>
+
+{% endblock %}
+
+</html>
+
+
+

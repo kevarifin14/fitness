@@ -1,0 +1,25 @@
+<html>
+
+{% extends 'fitstart/nav.html' %}
+
+{% block content %}
+
+<div id="main">
+
+	{% if challenge_list %}
+		{% for challenge in challenge_list %}
+			<a href="{% url 'fitstart:event' challenge.workout.id %}"><b><p>{{ challenge.name }}</p></b></a>
+			<p>{{ challenge.goal }}</p>
+			{% if challenge.workout %}
+				<p>{{ challenge.workout }}</p>
+			{% endif %}
+		{% endfor %}
+	{% else %}
+		<p>No challenges are available.</p>
+	{% endif %}
+
+</div>
+
+{% endblock %}
+
+</html>

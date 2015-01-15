@@ -1,0 +1,32 @@
+<html>
+
+{% extends 'fitstart/nav.html' %}
+
+{% block content %}
+
+
+<div id="main">
+
+	<h2>Click to add a workout to calendar</h2>
+	<div id="boxwrap">
+	{% if workout_list %}
+		{% for workout in workout_list %}
+			<a href="{% url 'fitstart:event' workout.id %}">
+				<div id="box"> 
+					<div id="content">
+						<p>{{ workout.name }}</p>
+					</div>
+				</div>
+			</a>
+		{% endfor %}
+	{% else %}
+		<p>No workouts are available.</p>
+	{% endif %}
+	</div>
+
+</div>
+
+{% endblock %}
+
+</html>
+

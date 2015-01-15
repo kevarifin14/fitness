@@ -1,0 +1,88 @@
+<html>
+
+{% extends 'fitstart/nav.html' %}
+
+{% block content %}
+
+<div id="main">
+
+
+	{% for workout in workout_list %}
+		<h2>{{ workout.name }}</h2>
+		<table>
+			<th>Exercise</th>
+			<th>Reps</th>
+			<th>Notes</th>
+			{% if workout.exercise_one.exercise_name %}
+			<tr>
+				<td>{{ workout.exercise_one }}</td>
+				{% if workout.timed_one %}
+					<td>{{ workout.reps_one }}s</td>
+				{% else %}
+					<td>{{ workout.reps_one }}</td>
+				{% endif %}
+				<td></td>
+			</tr>
+			{% endif %}
+			{% if workout.exercise_two.exercise_name %}
+			<tr>
+				<td>{{ workout.exercise_two }}</td>
+				{% if workout.timed_two %}
+					<td>{{ workout.reps_two }}s</td>
+				{% else %}
+					<td>{{ workout.reps_two }}</td>
+				{% endif %}
+				<td></td>
+			</tr>
+			{% endif %}
+			{% if workout.exercise_three.exercise_name %}
+			<tr>
+				<td>{{ workout.exercise_three }}</td>
+				{% if workout.timed_three %}
+					<td>{{ workout.reps_three }}s</td>
+				{% else %}
+					<td>{{ workout.reps_three }}</td>
+				{% endif %}
+				<td></td>
+			</tr>
+			{% endif %}
+			{% if workout.exercise_four.exercise_name %}
+			<tr>
+				<td>{{ workout.exercise_four }}</td>
+				{% if workout.timed_four %}
+					<td>{{ workout.reps_four }}s</td>
+				{% else %}
+					<td>{{ workout.reps_four }}</td>
+				{% endif %}
+				<td></td>
+			</tr>
+			{% endif %}
+			{% if workout.exercise_five.exercise_name %}
+			<tr>
+				<td>{{ workout.exercise_five }}</td>
+				{% if workout.timed_five %}
+					<td>{{ workout.reps_five }}s</td>
+				{% else %}
+					<td>{{ workout.reps_five }}</td>
+				{% endif %}
+				<td></td>
+			</tr>
+			{% endif %}
+			{% if workout.exercise_six.exercise_name %}
+			<tr>
+				<td>{{ workout.exercise_six }}</td>
+				{% if workout.timed_six %}
+					<td>{{ workout.reps_six }}s</td>
+				{% else %}
+					<td>{{ workout.reps_six }}</td>
+				{% endif %}
+				<td></td>
+			</tr>
+			{% endif %}
+		</table>			
+	{% endfor %}
+</div>
+
+{% endblock %}
+
+</html>

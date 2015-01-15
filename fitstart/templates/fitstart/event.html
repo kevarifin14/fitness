@@ -1,0 +1,27 @@
+<html>
+
+{% extends 'fitstart/nav.html' %}
+
+{% block content %}
+
+<script type="text/javascript">
+	var elem = event.getElementsByName("title")
+	elem.value = "hello"
+</script>
+
+
+<div id="main">
+
+<form action="" method="post" name="event">
+	{% csrf_token %}
+	
+	{{ form.as_p }}
+
+<input type="submit" value="Submit">
+<input type="reset" value="Reset">
+
+</div>
+
+{% endblock %}
+
+</html>

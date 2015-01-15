@@ -1,0 +1,43 @@
+<html>
+
+{% extends 'fitstart/nav.html' %}
+
+{% block content %}
+
+<div id="upperbody">
+	<h3 id="repo">Upper Body</h3>
+	<ul>
+	{% for exercise in exercise_list %}
+		{% if exercise.exercise_type.exercise_class == "['U']"%}
+			<li>{{ exercise.exercise_name }}, {{exercise.exercise_type }}</li>
+		{% endif %}
+	{% endfor %}
+	</ul>	
+
+</div>
+
+<div id="lowerbody">
+	<h3 id="repo">Lower Body</h3>
+	<ul>
+	{% for exercise in exercise_list %}
+		{% if exercise.exercise_type.exercise_class == "['L']"%}
+			<li>{{ exercise.exercise_name }}, {{exercise.exercise_type }}</li>
+		{% endif %}
+	{% endfor %}
+	</ul>	
+</div>
+
+<div id="core">
+	<h3 id="repo">Core</h3>
+	<ul>
+	{% for exercise in exercise_list %}
+		{% if exercise.exercise_type.exercise_class == "['C']"%}
+			<li>{{ exercise.exercise_name }}, {{exercise.exercise_type }}</li>
+		{% endif %}
+	{% endfor %}
+	</ul>
+</div>
+
+{% endblock %}
+
+</html>
