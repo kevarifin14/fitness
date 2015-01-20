@@ -4,6 +4,7 @@ import datetime
 
 # Create your models here.
 
+
 class ExerciseType(models.Model):
 	category = models.CharField(max_length=20)
 	exercise_class = models.CharField(max_length=10, default=None, blank=True, null=True)
@@ -13,7 +14,6 @@ class ExerciseType(models.Model):
 
 	def __repr__(self):
 		return self.category
-
 
 class Exercise(models.Model):
 	exercise_name = models.CharField(max_length=50)
@@ -25,6 +25,7 @@ class Exercise(models.Model):
 
 	def __repr__(self):
 		return self.exercise_name
+
 
 
 class Workout(models.Model):
@@ -71,9 +72,10 @@ class Challenge(models.Model):
 	def __repr__(sefl):
 		return self.name
 
+
 class Event(models.Model):
 	workout = models.ForeignKey(Workout)
-	start = models.DateField()
+	start = models.DateField(default=datetime.date.today)
 	end = models.DateField(null=True, blank=True)
 
 	def __str__(self):
@@ -81,3 +83,13 @@ class Event(models.Model):
 
 	def __repr__(self):
 		return self.workout.name
+
+class Quotation(models.Model):
+	quotation = models.CharField(max_length=500)
+	author = models.CharField(max_length=30,null=True,blank=True)
+
+	def __str__(self):
+		return self.quotation
+
+	def __repr__(self):
+		return self.quotation

@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.forms import ModelForm
 from django import forms
-from fitstart.models import Exercise, Workout, ExerciseType, Challenge, Event
+from fitstart.models import Exercise, Workout, ExerciseType, Challenge, Event, Quotation
+from fitstart.forms import QuotationForm
 
 
 # Register your models here.
@@ -47,12 +48,18 @@ class ChallengeAdmin(admin.ModelAdmin):
 
 class EventAdmin(admin.ModelAdmin):
 	fieldsets = [
-		(None, {'fields': ['title', 'workout']}),
+		(None, {'fields': ['workout']}),
 		('Date Information', {'fields': ['start', 'end']}),
 	]
+
+class QuotationAdmin(admin.ModelAdmin):
+	form = QuotationForm
+
+	list_display = ('quotation', 'author')
 
 admin.site.register(Exercise, ExerciseAdmin)
 admin.site.register(Workout, WorkoutAdmin)
 admin.site.register(ExerciseType, ExerciseTypeAdmin)
 admin.site.register(Challenge, ChallengeAdmin)
 admin.site.register(Event, EventAdmin)
+admin.site.register(Quotation, QuotationAdmin)

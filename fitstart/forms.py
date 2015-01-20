@@ -1,7 +1,8 @@
 from django.forms import ModelForm
 from django import forms
 from django.forms.extras.widgets import SelectDateWidget
-from fitstart.models import Exercise, Workout, ExerciseType, Challenge, Event
+from fitstart.models import Exercise, Workout, ExerciseType, Challenge, Event, Quotation
+import datetime
 
 #where I write my forms
 
@@ -24,3 +25,11 @@ class EventForm(ModelForm):
 	class Meta: 
 		model = Event
 		fields = ['workout', 'start', 'end']
+
+class QuotationForm(ModelForm):
+	class Meta:
+		model = Quotation
+		fields = ['quotation', 'author']
+		widgets = {
+			'quotation': forms.Textarea(attrs={'cols':50,'rows':5}),
+		}

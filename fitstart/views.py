@@ -3,11 +3,10 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 from django.shortcuts import render
 
-from fitstart.models import Exercise, Workout, ExerciseType, Challenge, Event
+from fitstart.models import Exercise, Workout, ExerciseType, Challenge, Event, Quotation
 from fitstart.forms import WorkoutForm, ExerciseForm, EventForm
 
-import datetime
-import calendar
+import datetime, calendar, random
 from datetime import date, timedelta, time
 
 #  your views here.
@@ -82,6 +81,9 @@ def create_calendar(request):
 	week_iter = cal.iterweekdays()
 	today = datetime.datetime.now()
 	week = [today]
+	now = datetime.datetime.now()
+	number = random.randint(1,1)
+	quotation = Quotation.objects.get(pk=number)
 	
 	for day in week_iter:
 		mod = timedelta(days=1)
@@ -90,13 +92,14 @@ def create_calendar(request):
 
 	context = {
 		'event_list': events,
-		'now': today,
+		'now': now,
 		'week': week,
+		'quotation': quotation,
 	}
 	return render(request, template, context)
 
 def create_event(request, workout_id):
-	form = EventForm(data=request.POST or None, initial={'workout': Workout.objects.get(pk=workout_id)})
+	form = EventForm(data=request.POST or None, initial={'workout': Workout.objects.get(pk=workout_id), 'start': datetime.date.today(), 'end': datetime.date.today()})
 
 	if form.is_valid():
 		saved = form.save(commit=False)
